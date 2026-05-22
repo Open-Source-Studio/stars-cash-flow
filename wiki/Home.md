@@ -7,7 +7,7 @@
 - [API Reference](API-Reference) — full reseller API surface.
 - [Integration with JustAnotherPanel-style resellers](JustAnotherPanel-Integration) — drop-in guide.
 - [Pricing Methodology](Pricing-Methodology) — how rates are derived, where the markup goes.
-- [Hold and Refund Mechanics](Hold-and-Refund-Mechanics) — Telegram Stars 21-day rule, anti-cheat, refunds.
+- [Hold and Refund Mechanics](Hold-and-Refund-Mechanics) — Telegram Stars 21-day rule, subscription verification, refunds.
 - [Money Safety Invariants](Money-Safety-Invariants) — what the platform guarantees at the SQL layer.
 - [FAQ](FAQ) — long-form answers to common questions.
 

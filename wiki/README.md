@@ -10,6 +10,6 @@ These pages also mirror to the [GitHub Wiki](https://github.com/Open-Source-Stud
 - 📘 [API Reference](API-Reference.md) — full reseller API surface.
 - 🔄 [JustAnotherPanel Integration](JustAnotherPanel-Integration.md) — drop-in guide for SMM-panel resellers.
 - 💲 [Pricing Methodology](Pricing-Methodology.md) — how rates are derived, where the markup goes.
-- ⏳ [Hold and Refund Mechanics](Hold-and-Refund-Mechanics.md) — Telegram Stars 21-day rule, anti-cheat, refunds.
+- ⏳ [Hold and Refund Mechanics](Hold-and-Refund-Mechanics.md) — Telegram Stars 21-day rule, subscription verification, refunds.
 - 🛡️ [Money Safety Invariants](Money-Safety-Invariants.md) — what the platform guarantees at the SQL layer.
 - ❓ [FAQ](FAQ.md) — long-form answers to common questions.

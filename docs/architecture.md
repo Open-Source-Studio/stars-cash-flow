@@ -77,7 +77,7 @@ sequenceDiagram
 ## Steps in detail
 
 1. **Advertiser** creates the task → balance is debited atomically (`UPDATE … WHERE balance >= cost`) and a `tasks` row is inserted in the same transaction.
-2. **Worker** picks the task from the available list (filtered by eligibility, premium gate, anti-cheat history).
+2. **Worker** picks the task from the available list (filtered by eligibility — premium gate, single-task-per-user, prior completions).
 3. Worker confirms completion → `completions` row created.
 4. `increment_task_done` runs atomically with a `WHERE done_slots < total_slots` guard. If the slot was the last one, the task flips to `completed`. Workers who race past the quota are politely rejected.
 5. `pay_worker` writes the reward into the `completions` row as `status='hold'` and sets `release_at = now + STARS_HOLD_SECONDS` (21 days). Referral bonuses are credited immediately (no hold).

@@ -36,11 +36,11 @@ TON rewards default to a **48-hour hold** (anti-chargeback). Both windows are co
    - Stars are paid out manually by an operator to your Telegram account (`@username` or numeric ID).
    - TON is paid out manually to the TON address you provide. Minimums configured platform-side; see the dialog.
 
-### Anti-cheat
+### Eligibility & verification
 
 - One worker can take each task once.
 - Subscription is re-checked at the end of the hold — leaving early voids the reward.
-- Anti-farm logic on referral bonuses: a single user can't farm referrals from themselves.
+- Referral bonuses ignore self-invites.
 - Premium-only tasks are gated by Telegram Premium status.
 
 ## Common commands

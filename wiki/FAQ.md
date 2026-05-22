@@ -8,7 +8,7 @@ It mediates between three parties on Telegram:
 - **Workers** want to earn Stars or TON.
 - **Resellers** want a wholesale source of real engagement they can resell to their own customers via an existing SMM-panel UI.
 
-We hold the user base of workers, the anti-cheat, the billing rails, and the API. Advertisers pay, workers earn, resellers integrate.
+We hold the user base of workers, the verification logic, the billing rails, and the API. Advertisers pay, workers earn, resellers integrate.
 
 ## Is the API actually compatible with JustAnotherPanel?
 
@@ -29,9 +29,9 @@ Telegram's own rule: a bot that receives Stars can only spend them 21 days after
 
 The hold sweeper re-checks subscription via `bot.get_chat_member()` right before paying. If the worker left / was kicked / was banned, the completion flips to `rejected_unsub` and the advertiser is refunded automatically. The worker gets a notification explaining the void.
 
-## Are these real users or bots?
+## Who performs the actions?
 
-Real Telegram users from our worker pool. The reward gets credited only after a Bot-API-verified subscription that survives the hold window. There is no way for a bot account to passively farm rewards — anti-cheat checks include premium gating, single-task-per-user, referral anti-self-farm and subscription re-checks.
+Live Telegram users from the worker pool. A reward is credited only after a Bot-API-verified subscription that survives the hold window. Eligibility checks before paying out include premium gating, single-task-per-user, referral self-invite filter and subscription re-checks.
 
 ## How are prices set?
 

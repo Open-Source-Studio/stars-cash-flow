@@ -15,7 +15,7 @@ We aim to acknowledge new reports within **48 hours** and provide a fix or remed
 
 In scope:
 
-- Telegram bot [@StarsCashFlowbot](https://t.me/StarsCashFlowbot) — money flows, hold logic, withdrawal, anti-cheat bypass.
+- Telegram bot [@StarsCashFlowbot](https://t.me/StarsCashFlowbot) — money flows, hold logic, withdrawal, verification logic.
 - Mini App and web cabinet on `https://api-stars.ros.media/`.
 - Reseller API at `https://api-stars.ros.media/api`.
 - TON Connect manifest and proof verification.

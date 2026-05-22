@@ -31,8 +31,8 @@ Changing either env variable in Coolify takes effect without a redeploy.
 
 Manual services (Stars Transfer, Premium Mix subscribers, Premium Boosts, RU/Global locale-targeted) have hand-priced `rate_usd` stored per service in the DB, edited via the admin panel without a deploy. Live values at [`/api?action=services`](https://api-stars.ros.media/api?action=services).
 
-## Why not match the cheapest competitor on bot followers?
+## Why is the rate at this level?
 
-Because our workers are real Telegram users who get paid in Stars. Cost-per-acquisition is `reward × (1 + fee)`, not the marginal compute cost of spinning up another bot account. Cheaper providers ship bots that drop off in days; ours stay subscribed because the worker earns from the platform, not from a one-off bot click.
+Our cost-per-acquisition is `reward × (1 + fee)` — the actual Stars we pay a live Telegram user to complete a task. Subscribers stay subscribed because they are paid through the platform on each verified action, and the platform re-checks subscription at the end of the hold (see [Hold and Refund Mechanics](Hold-and-Refund-Mechanics)).
 
-The hold + subscription re-check at release time enforces this on the platform side, not just in marketing copy. See [Hold and Refund Mechanics](Hold-and-Refund-Mechanics).
+In other words, the rate maps to a real action by a real account, and that's enforced on the platform side rather than promised in marketing copy.

@@ -31,7 +31,7 @@ A Telegram-native **CPA platform** built around the real Telegram Stars economy:
 - 🛠 **Workers** execute tasks inside Telegram and earn the reward, withdrawn to their Telegram account (Stars) or TON wallet.
 - 🔌 **Resellers** integrate over a standard SMM-Panel-compatible HTTP API — drop-in compatible with the **JustAnotherPanel / SocPanel / AliPanel** call signature.
 
-The platform owns the worker pool, anti-cheat (hold periods + subscription re-checks), and the billing rails. **Real users**, **transparent pricing**, **no synthetic followers**.
+The platform owns the worker pool, verification logic (hold periods + Bot-API subscription checks), and the billing rails. **Live workforce**, **transparent pricing**, **verified subscriptions**.
 
 > **This repository** holds the public documentation, integration guides and examples. Production code is proprietary.
 
