@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Stars Cash Flow logo">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#lg)"/>
+  <polygon points="64,18 78.6,57.3 121,57.3 86.8,82 100.4,121 64,96.6 27.6,121 41.2,82 7,57.3 49.4,57.3" fill="#fff"/>
+</svg>

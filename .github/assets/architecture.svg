@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Stars Cash Flow architecture diagram">
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#131d35"/>
+    </linearGradient>
+    <linearGradient id="boxBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="boxPurple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#7e22ce"/>
+    </linearGradient>
+    <linearGradient id="boxEmerald" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="boxAmber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="boxSlate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#475569"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#9eb0cb"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; fill: #fff; }
+    .lbl { fill: #9eb0cb; font-size: 14px; font-weight: 600; }
+    .title { font-size: 18px; font-weight: 800; }
+    .meta { font-size: 13px; opacity: 0.9; }
+    .box { stroke: rgba(255,255,255,0.18); stroke-width: 1; rx: 14; ry: 14; }
+    .conn { fill: none; stroke: #9eb0cb; stroke-width: 1.5; opacity: 0.7; }
+  </style>
+  <rect width="1200" height="720" fill="url(#bgA)"/>
+
+  <text x="60" y="55" font-size="28" font-weight="900">Stars Cash Flow — high-level architecture</text>
+  <text x="60" y="82" class="lbl">aiogram bot + aiohttp API + Mini App + reseller API, all over one SQLite</text>
+
+  <!-- Telegram -->
+  <g transform="translate(60 140)">
+    <rect class="box" width="220" height="100" fill="url(#boxSlate)"/>
+    <text x="20" y="38" class="title">Telegram</text>
+    <text x="20" y="62" class="meta">Bot API · Stars Payments</text>
+    <text x="20" y="82" class="meta">WebApp · Login Widget</text>
+  </g>
+
+  <!-- Users -->
+  <g transform="translate(60 270)">
+    <rect class="box" width="220" height="120" fill="url(#boxBlue)"/>
+    <text x="20" y="34" class="title">Users</text>
+    <text x="20" y="58" class="meta">📣 Advertisers</text>
+    <text x="20" y="78" class="meta">🛠 Workers</text>
+    <text x="20" y="98" class="meta">🔌 Resellers (API clients)</text>
+  </g>
+
+  <!-- Bot -->
+  <g transform="translate(360 140)">
+    <rect class="box" width="260" height="100" fill="url(#boxBlue)"/>
+    <text x="20" y="38" class="title">Aiogram bot</text>
+    <text x="20" y="62" class="meta">handlers · payments · admin</text>
+    <text x="20" y="82" class="meta">@StarsCashFlowbot</text>
+  </g>
+
+  <!-- API -->
+  <g transform="translate(360 270)">
+    <rect class="box" width="260" height="100" fill="url(#boxPurple)"/>
+    <text x="20" y="38" class="title">aiohttp HTTP API</text>
+    <text x="20" y="62" class="meta">/api · /miniapp · /app</text>
+    <text x="20" y="82" class="meta">/admin/web · /webhooks</text>
+  </g>
+
+  <!-- Reseller API surface -->
+  <g transform="translate(360 400)">
+    <rect class="box" width="260" height="100" fill="url(#boxEmerald)"/>
+    <text x="20" y="38" class="title">Reseller API</text>
+    <text x="20" y="62" class="meta">SMM-Panel compatible</text>
+    <text x="20" y="82" class="meta">services / add / status / cancel</text>
+  </g>
+
+  <!-- Mini App / Web cabinet -->
+  <g transform="translate(700 140)">
+    <rect class="box" width="280" height="100" fill="url(#boxPurple)"/>
+    <text x="20" y="38" class="title">Mini App + Web cabinet</text>
+    <text x="20" y="62" class="meta">HTML + JS (no build)</text>
+    <text x="20" y="82" class="meta">Telegram WebApp · Tabler admin</text>
+  </g>
+
+  <!-- Database -->
+  <g transform="translate(700 270)">
+    <rect class="box" width="280" height="100" fill="url(#boxAmber)"/>
+    <text x="20" y="38" class="title">SQLite (aiosqlite)</text>
+    <text x="20" y="62" class="meta">BEGIN IMMEDIATE · UNIQUE payload</text>
+    <text x="20" y="82" class="meta">payments · tasks · completions · …</text>
+  </g>
+
+  <!-- Hold cron -->
+  <g transform="translate(700 400)">
+    <rect class="box" width="280" height="100" fill="url(#boxEmerald)"/>
+    <text x="20" y="38" class="title">Hold sweeper (every 5 min)</text>
+    <text x="20" y="62" class="meta">Re-check subscription · refund</text>
+    <text x="20" y="82" class="meta">atomic claim-before-credit</text>
+  </g>
+
+  <!-- KPI dashboard -->
+  <g transform="translate(1010 140)">
+    <rect class="box" width="150" height="100" fill="url(#boxBlue)"/>
+    <text x="16" y="38" class="title">KPI / ROI</text>
+    <text x="16" y="62" class="meta">Revenue · Cost</text>
+    <text x="16" y="82" class="meta">Margin %</text>
+  </g>
+
+  <!-- Providers -->
+  <g transform="translate(1010 270)">
+    <rect class="box" width="150" height="100" fill="url(#boxSlate)"/>
+    <text x="16" y="38" class="title">Providers</text>
+    <text x="16" y="62" class="meta">Stars · TON</text>
+    <text x="16" y="82" class="meta">Tegro · Lava · etc.</text>
+  </g>
+
+  <!-- Connections -->
+  <line class="conn" x1="280" y1="190" x2="360" y2="190" marker-end="url(#arrow)"/>
+  <line class="conn" x1="280" y1="330" x2="360" y2="330" marker-end="url(#arrow)"/>
+  <line class="conn" x1="620" y1="190" x2="700" y2="190" marker-end="url(#arrow)"/>
+  <line class="conn" x1="620" y1="320" x2="700" y2="320" marker-end="url(#arrow)"/>
+  <line class="conn" x1="620" y1="450" x2="700" y2="450" marker-end="url(#arrow)"/>
+  <line class="conn" x1="490" y1="240" x2="490" y2="270" marker-end="url(#arrow)"/>
+  <line class="conn" x1="490" y1="370" x2="490" y2="400" marker-end="url(#arrow)"/>
+  <line class="conn" x1="980" y1="190" x2="1010" y2="190" marker-end="url(#arrow)"/>
+  <line class="conn" x1="980" y1="320" x2="1010" y2="320" marker-end="url(#arrow)"/>
+  <line class="conn" x1="840" y1="370" x2="840" y2="400" marker-end="url(#arrow)"/>
+
+  <!-- Footer -->
+  <text x="60" y="680" class="lbl">Coolify deploy · Traefik TLS · Let’s Encrypt</text>
+  <text x="60" y="700" class="lbl">github.com/Open-Source-Studio/stars-cash-flow · stars.ros.media · @StarsCashFlowbot</text>
+</svg>

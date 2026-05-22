@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🆘 Support / business question
+    url: https://t.me/StarsCashFlowbot
+    about: Reach the bot's support channel for account / billing / operator help. GitHub issues are for docs and code only.
+  - name: 🔒 Security report
+    url: https://github.com/Open-Source-Studio/stars-cash-flow/blob/main/SECURITY.md
+    about: Please follow the disclosure policy instead of opening a public issue.

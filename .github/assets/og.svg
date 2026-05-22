@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Stars Cash Flow — Telegram Stars CPA: Bot, Mini App, Reseller API">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="0.6" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#172a55"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.25" r="0.55">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Decorative stars -->
+  <g opacity="0.18" fill="#fff">
+    <circle cx="1020" cy="90"  r="2.5"/>
+    <circle cx="1100" cy="170" r="1.6"/>
+    <circle cx="940"  cy="220" r="2.0"/>
+    <circle cx="1140" cy="260" r="1.8"/>
+    <circle cx="880"  cy="80"  r="1.2"/>
+    <circle cx="1060" cy="320" r="2.0"/>
+  </g>
+
+  <!-- Big star -->
+  <g transform="translate(880 80) scale(1.8)" opacity="0.95">
+    <polygon points="80,0 99.6,57.3 160,57.3 111.4,93 130.4,150.3 80,115 29.6,150.3 48.6,93 0,57.3 60.4,57.3" fill="#fff"/>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(80 200)">
+    <text fill="#9eb0cb" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="8">✨  STARS CASH FLOW</text>
+    <text y="90" fill="url(#title)" font-family="Inter, system-ui, sans-serif" font-size="76" font-weight="900" letter-spacing="-2">Telegram Stars CPA</text>
+    <text y="170" fill="#fff" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="800" letter-spacing="-1">Bot · Mini App · API</text>
+    <text y="240" fill="#c8d7ef" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="500">Real subscribers from real users.</text>
+    <text y="278" fill="#c8d7ef" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="500">Paid in Stars or TON.</text>
+  </g>
+
+  <!-- Pills row -->
+  <g transform="translate(80 540)" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600">
+    <g transform="translate(0 0)">
+      <rect width="200" height="48" rx="24" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)"/>
+      <text x="22" y="31" fill="#fff">⭐ Telegram Stars</text>
+    </g>
+    <g transform="translate(220 0)">
+      <rect width="190" height="48" rx="24" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)"/>
+      <text x="22" y="31" fill="#fff">💎 TON payments</text>
+    </g>
+    <g transform="translate(430 0)">
+      <rect width="260" height="48" rx="24" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)"/>
+      <text x="22" y="31" fill="#fff">🔌 SMM-Panel API</text>
+    </g>
+    <g transform="translate(710 0)">
+      <rect width="170" height="48" rx="24" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)"/>
+      <text x="22" y="31" fill="#fff">🛡️ Real users</text>
+    </g>
+  </g>
+
+  <!-- URL -->
+  <text x="80" y="615" fill="#9eb0cb" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600">stars.ros.media · github.com/Open-Source-Studio/stars-cash-flow · @StarsCashFlowbot</text>
+</svg>

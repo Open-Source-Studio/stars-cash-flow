@@ -2,43 +2,34 @@
 
 High-level overview of how Stars Cash Flow is put together. No code in this doc — the implementation lives in a private repository.
 
+![Architecture diagram](../.github/assets/architecture.svg)
+
 ## Components
 
-```
-                 ┌───────────────────────────┐
-                 │   Telegram (Bot API)      │
-                 └─────────────┬─────────────┘
-                               │ updates / payments / WebApp
-       ┌───────────────────────┼───────────────────────┐
-       ▼                       ▼                       ▼
-┌─────────────┐         ┌─────────────┐         ┌──────────────────┐
-│ Aiogram bot │◀───────▶│  Aiohttp    │◀───────▶│ Mini App + Web   │
-│  (handlers) │         │  HTTP API   │         │ Cabinet (HTML+JS)│
-└──────┬──────┘         └──────┬──────┘         └──────────────────┘
-       │                       │
-       │                       ▼
-       │              ┌─────────────────────┐
-       │              │ Reseller SMM API    │
-       │              │ services / add /    │
-       │              │ status / cancel     │
-       │              └─────────────────────┘
-       │
-       ▼
-┌────────────────────────────────────────────────────┐
-│ SQLite (aiosqlite) — single durable store          │
-│  users · advertiser_balances · tasks · completions │
-│  payments · withdrawals · api_keys · api_orders    │
-│  web_sessions · audit_log · staking · giveaways    │
-└────────────────────────────────────────────────────┘
-       ▲
-       │ background sweep (every 5 min)
-┌────────────────────────────────────┐
-│ Hold cron (services/hold_cron)     │
-│ release_held_completions() →       │
-│   for type=subscribe: re-check     │
-│   bot.get_chat_member() → reject + │
-│   refund advertiser, or credit.    │
-└────────────────────────────────────┘
+```mermaid
+flowchart LR
+    TG[Telegram<br/>Bot API · Stars · WebApp]
+    Bot[Aiogram bot<br/>@StarsCashFlowbot]
+    Api[aiohttp HTTP API]
+    Mini[Mini App + Web cabinet<br/>vanilla HTML + Tabler admin]
+    Resel[Reseller API<br/>SMM-Panel compatible]
+    DB[(SQLite — aiosqlite<br/>BEGIN IMMEDIATE)]
+    Cron[Hold sweeper<br/>every 5 min]
+    KPI[KPI / ROI dashboard]
+    Prov[Payment providers<br/>Stars · TON · Tegro · Lava ...]
+
+    TG --> Bot
+    TG --> Api
+    Bot <--> Api
+    Api --> Mini
+    Api --> Resel
+    Bot --> DB
+    Api --> DB
+    Resel --> DB
+    Cron --> DB
+    Api --> KPI
+    KPI --> DB
+    Prov --> Api
 ```
 
 ## Stack
@@ -49,7 +40,41 @@ High-level overview of how Stars Cash Flow is put together. No code in this doc 
 - **aiosqlite** — single SQLite file under `/data/cashstarflow.db` (persistent Coolify volume). All writes wrapped in `BEGIN IMMEDIATE` to keep advisory-lock semantics under concurrent updates.
 - **Vanilla HTML + CSS + JS** for Mini App and admin panel — no frontend build. Admin panel is skinned with [Tabler](https://tabler.io/) via CDN.
 
-## Lifecycle of a task-exchange order
+## Lifecycle of a task-exchange order — sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Adv as 📣 Advertiser
+    participant Bot
+    participant DB
+    participant Worker as 🛠 Worker
+    participant Cron as Hold sweeper
+    participant TG as Telegram Bot API
+
+    Adv->>Bot: Create task (reward, slots)
+    Bot->>DB: BEGIN IMMEDIATE → debit balance, INSERT task
+    DB-->>Bot: ok
+    Worker->>Bot: Pick task
+    Bot->>DB: INSERT completion (status=pending)
+    Worker->>Bot: Confirm done
+    Bot->>DB: increment_task_done WHERE done_slots < total_slots
+    alt slot taken
+        Bot->>DB: completion.status=hold, release_at=now+21d
+    else over quota
+        Bot->>Worker: reject (politely)
+    end
+    Note over Cron,DB: every 5 minutes
+    Cron->>DB: SELECT holds WHERE release_at <= now
+    Cron->>TG: getChatMember(target, worker)
+    alt still subscribed
+        Cron->>DB: claim row → credit worker, INSERT payment
+    else left channel
+        Cron->>DB: status=rejected_unsub, refund advertiser
+    end
+```
+
+## Steps in detail
 
 1. **Advertiser** creates the task → balance is debited atomically (`UPDATE … WHERE balance >= cost`) and a `tasks` row is inserted in the same transaction.
 2. **Worker** picks the task from the available list (filtered by eligibility, premium gate, anti-cheat history).
