@@ -31,4 +31,4 @@ Conventional-ish: `docs: …`, `examples: …`, `chore: …`. One concern per co
 
 Be polite. Be specific. Argue with the idea, not the person. If you wouldn't say it across the table to a colleague, don't say it here.
 
-We follow the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) for moderation. Contact: `security@ros.media`.
+We follow the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) for moderation.

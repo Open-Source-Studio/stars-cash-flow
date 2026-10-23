@@ -6,7 +6,6 @@ If you discover a security vulnerability — please **do not** open a public Git
 
 Instead, contact us through one of these channels:
 
-- **Email:** [security@ros.media](mailto:security@ros.media)
 - **Telegram:** message [@StarsCashFlowbot](https://t.me/StarsCashFlowbot) → "Поддержка / Support" → mark the conversation as "Security".
 
 We aim to acknowledge new reports within **48 hours** and provide a fix or remediation plan within **14 days** for confirmed issues.
